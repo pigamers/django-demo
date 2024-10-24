@@ -1,5 +1,5 @@
 """
-URL configuration for mysite project.
+URL configuration for todo_site project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -17,10 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-
-from . import views
+from todo import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", views.index, name="index"),
+     #####################home_page###########################################
+    path('', views.index, name="todo"),
+    ####################give id no. item_id name or item_id=i.id ############
+    # pass item_id as primary key to remove that the todo with given id
+    path('del/<str:item_id>', views.remove, name="del"),
+    ########################################################################
+    path('admin/', admin.site.urls),
 ]
